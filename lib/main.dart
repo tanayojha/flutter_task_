@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'bottom_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -31,20 +33,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String> categoryList = ["Home Services", "Motors","Spa","Plumber"];
-  List<String> subCategoryList = ["test 1","test 2","test 3","test 4"];
+  List<String> categoryList = ["Home Services", "Motors", "Spa", "Plumber"];
+  List<String> subCategoryList = ["test 1", "test 2", "test 3", "test 4"];
   bool _pinned = true;
   bool _snap = false;
   bool _floating = false;
   int _selectedIndex = 0;
+  final _screenNames = [const Home(),const Profile(),const Settings(),const More()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Colors.grey,
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            backgroundColor: Colors.blueGrey,
             pinned: _pinned,
             snap: _snap,
             floating: _floating,
@@ -67,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           const SliverToBoxAdapter(),
-          _getSlivers(categoryList,subCategoryList, context), //SliverList
+          _getSlivers(categoryList, subCategoryList, context), //SliverList
         ],
       ),
       drawer: Drawer(
@@ -103,24 +107,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: BottomAppBar(
         elevation: 5,
-        items: const <BottomNavigationBarItem>[
+        items: const <BottomNavigationBarItem> [
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Home",
               backgroundColor: Colors.lightBlue),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              label: "Profile",
+              icon: Icon(Icons.assignment),
+              label: "My Bookings",
               backgroundColor: Colors.lime),
           BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: "Settings",
+              icon: Icon(Icons.notifications),
+              label: "Notifications",
               backgroundColor: Colors.orangeAccent),
           BottomNavigationBarItem(
-              icon: Icon(Icons.more_horiz),
-              label: "More",
+              icon: Icon(Icons.message),
+              label: "Place Request",
               backgroundColor: Colors.redAccent),
         ],
         currentIndex: _selectedIndex,
@@ -189,11 +193,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-SliverList _getSlivers(List<String> stringList1,List<String> stringList, BuildContext context) {
+SliverList _getSlivers(
+    List<String> stringList1, List<String> stringList, BuildContext context) {
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
+  //
+  // Note: This is a GlobalKey<FormState>,
+  // not a GlobalKey<MyCustomFormState>.
+  final _formKey = GlobalKey<FormState>();
+
   return SliverList(
     delegate: SliverChildBuilderDelegate(
       (BuildContext context, int index) {
-        //return buildRow(myList[index]);
         if (index == 0) {
           return Padding(
             padding: const EdgeInsets.all(10),
@@ -205,8 +216,37 @@ SliverList _getSlivers(List<String> stringList1,List<String> stringList, BuildCo
                 ),
                 child: ListTile(
                     leading: const Icon(Icons.search),
-                    title: const Text("Search for a service"),
-                    onTap: () {}),
+                    title: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          // Add TextFormFields and ElevatedButton here.
+                          TextFormField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Search for a service",
+                            ),
+                            // The validator receives the text that the user has entered.
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter some text';
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                    onTap: () {
+                      // Validate returns true if the form is valid, or false otherwise.
+                      if (_formKey.currentState!.validate()) {
+                        // If the form is valid, display a snackbar.
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Processing Data')),
+                        );
+                      }
+                    }),
               ),
             ),
           );
@@ -214,7 +254,8 @@ SliverList _getSlivers(List<String> stringList1,List<String> stringList, BuildCo
           return ListView.builder(
               physics: const ClampingScrollPhysics(),
               shrinkWrap: true,
-              itemCount: stringList.length, //we will pass here the Arraylist count
+              itemCount:
+                  stringList.length, //we will pass here the Arraylist count
               scrollDirection: Axis.vertical,
               itemBuilder: (context, position) {
                 return Column(
@@ -224,18 +265,15 @@ SliverList _getSlivers(List<String> stringList1,List<String> stringList, BuildCo
                         buildRow2(stringList1),
                       ],
                     ),
-                  SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      buildRow(stringList)
-                    ],
-                  ),
-                )
-                ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [buildRow(stringList)],
+                      ),
+                    )
+                  ],
                 );
-
               });
         }
       },
@@ -244,11 +282,11 @@ SliverList _getSlivers(List<String> stringList1,List<String> stringList, BuildCo
   );
 }
 
- buildRow(List<String> strings) {
-   List<Widget> widgetlist = [];
-   var i;
-  for(i=0;i<strings.length;i++){
-      widgetlist.add(
+buildRow(List<String> strings) {
+  List<Widget> widgetlist = [];
+  var i;
+  for (i = 0; i < strings.length; i++) {
+    widgetlist.add(
       Padding(
           padding: const EdgeInsets.only(top: 0, left: 10, right: 5, bottom: 5),
           child: Column(
@@ -275,50 +313,46 @@ SliverList _getSlivers(List<String> stringList1,List<String> stringList, BuildCo
                 padding: EdgeInsets.all(5),
                 child: Align(
                   alignment: Alignment.topLeft,
-                child: Text(
-                  "TEST",
-                  style: TextStyle(
-                    fontSize: 12,
+                  child: Text(
+                    "no data available",
+                    style: TextStyle(
+                      fontSize: 12,
+                    ),
+                    textAlign: TextAlign.left,
+                    textDirection: TextDirection.rtl,
                   ),
-                  textAlign: TextAlign.left,
-                  textDirection: TextDirection.rtl,
-                ),
                 ),
               )
             ],
-          )
-      ),
+          )),
     );
   }
   return Row(children: widgetlist);
- }
+}
 
- buildRow2(List<String> strings) {
+buildRow2(List<String> strings) {
   var j;
   List<Widget> widgetlist1 = [];
-  for(j=0;j<=strings.length;j++){
-    if(j==0){
-      widgetlist1.add(
-        SizedBox(
-          height: 25,
-            child: Align(
-              alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 15,top: 0,right: 0,bottom: 0),
-                  child:Text(
-                    strings[j],
-                    style: const TextStyle(
-                      color: Colors.indigo,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
-                    ),
-                  ),
-                )
-            ),
-        )
-      );
+  for (j = 0; j <= strings.length; j++) {
+    if (j == 0) {
+      widgetlist1.add(SizedBox(
+        height: 25,
+        child: Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 15, top: 0, right: 0, bottom: 0),
+              child: Text(
+                strings[j],
+                style: const TextStyle(
+                  color: Colors.blueAccent,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 15,
+                ),
+              ),
+            )),
+      ));
     }
-
   }
   return Row(children: widgetlist1);
 }
