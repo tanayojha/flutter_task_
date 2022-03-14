@@ -193,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 SliverList _getSlivers(List myList, BuildContext context) {
   return SliverList(
-    delegate: SliverChildBuilderDelegate(
+      delegate: SliverChildBuilderDelegate(
           (BuildContext context, int index) {
           //return buildRow(myList[index]);
             if (index == 0) {
@@ -215,8 +215,9 @@ SliverList _getSlivers(List myList, BuildContext context) {
             }
             else if (index == 1) {
               return ListView.builder(
+                  physics: const ClampingScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: 3,
+                  itemCount: 5,
                   scrollDirection: Axis.vertical,
                   itemBuilder: (context, position) {
                       return SingleChildScrollView(
