@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: BottomNavigationBar(
         elevation: 5,
         items: const <BottomNavigationBarItem> [
           BottomNavigationBarItem(
