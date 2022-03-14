@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 
 void main() {
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -31,6 +32,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  List<String> list = ['Title 1', 'Title 2', 'Title 3', 'Title 4', 'Title 5', 'Title 6', 'Title 7', 'Title 8', 'Title 9', 'Title 10'];
+
   bool _pinned = true;
   bool _snap = false;
   bool _floating = false;
@@ -50,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
             actions: const [
               Padding(
                   padding:
-                      EdgeInsets.only(top: 0, left: 0, right: 15.0, bottom: 0),
+                  EdgeInsets.only(top: 0, left: 0, right: 15.0, bottom: 0),
                   child: Icon(Icons.my_location))
             ],
             flexibleSpace: const FlexibleSpaceBar(
@@ -65,387 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           const SliverToBoxAdapter(),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    //search
-                    Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Center(
-                        child: Card(
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: ListTile(
-                              leading: const Icon(Icons.search),
-                              title: const Text("Search for a service"),
-                              onTap: () {}),
-                        ),
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        //main container
-                        Container(
-                          height: 600,
-                          color: Colors.black12,
-                          //Main Column
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              //1 list
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 10,
-                                        left: 20,
-                                        right: 20,
-                                        bottom: 0),
-                                    child: Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        "Home Services",
-                                        style: TextStyle(
-                                          color: Colors.indigo,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Container(
-                                        height: 120,
-                                        child: ListView(
-                                          scrollDirection: Axis.horizontal,
-                                          children: <Widget>[
-                                            //All ITEMS here
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10,
-                                                    left: 18,
-                                                    right: 8,
-                                                    bottom: 0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height: 85,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: Border.all(
-                                                          color: Colors.black,
-                                                          width: 2,
-                                                        ),
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: const Image(
-                                                          image: NetworkImage(
-                                                              'https://www.tutorialkart.com/img/hummingbird.png'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const Padding(
-                                                      padding:
-                                                          EdgeInsets.all(5),
-                                                      child: Text(
-                                                        "Hardly Man",
-                                                        style: TextStyle(
-                                                          fontSize: 12,
-                                                        ),
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                        textDirection:
-                                                            TextDirection.rtl,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10,
-                                                    left: 8,
-                                                    right: 8,
-                                                    bottom: 0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height: 85,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: Border.all(
-                                                          color: Colors.black,
-                                                          width: 2,
-                                                        ),
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: const Image(
-                                                          image: NetworkImage(
-                                                              'https://www.tutorialkart.com/img/hummingbird.png'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const Padding(
-                                                      padding:
-                                                          EdgeInsets.all(5),
-                                                      child: Text(
-                                                        "Hardly Man",
-                                                        style: TextStyle(
-                                                            fontSize: 12),
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10,
-                                                    left: 8,
-                                                    right: 8,
-                                                    bottom: 0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height: 85,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: Border.all(
-                                                          color: Colors.black,
-                                                          width: 2,
-                                                        ),
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: const Image(
-                                                          image: NetworkImage(
-                                                              'https://www.tutorialkart.com/img/hummingbird.png'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const Padding(
-                                                      padding:
-                                                          EdgeInsets.all(5),
-                                                      child: Text(
-                                                        "Hardly Man",
-                                                        style: TextStyle(
-                                                            fontSize: 12),
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                          ],
-                                        )),
-                                  ),
-                                ],
-                              ),
-                              //2nd list
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 10,
-                                        left: 20,
-                                        right: 20,
-                                        bottom: 0),
-                                    child: Align(
-                                      alignment: Alignment.topLeft,
-                                      child: Text(
-                                        "Motor",
-                                        style: TextStyle(
-                                          color: Colors.indigo,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: Container(
-                                        width: 350,
-                                        height: 120,
-                                        child: ListView(
-                                          scrollDirection: Axis.horizontal,
-                                          children: <Widget>[
-                                            //All ITEMS here
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10,
-                                                    left: 18,
-                                                    right: 8,
-                                                    bottom: 0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height: 85,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: Border.all(
-                                                          color: Colors.black,
-                                                          width: 2,
-                                                        ),
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: const Image(
-                                                          image: NetworkImage(
-                                                              'https://www.tutorialkart.com/img/hummingbird.png'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const Padding(
-                                                      padding:
-                                                          EdgeInsets.all(5),
-                                                      child: Text(
-                                                        "Hardly Man",
-                                                        style: TextStyle(
-                                                            fontSize: 12),
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10,
-                                                    left: 8,
-                                                    right: 8,
-                                                    bottom: 0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height: 85,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: Border.all(
-                                                          color: Colors.black,
-                                                          width: 2,
-                                                        ),
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: const Image(
-                                                          image: NetworkImage(
-                                                              'https://www.tutorialkart.com/img/hummingbird.png'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const Padding(
-                                                      padding:
-                                                          EdgeInsets.all(5),
-                                                      child: Text(
-                                                        "Hardly Man",
-                                                        style: TextStyle(
-                                                            fontSize: 12),
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                            Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 10,
-                                                    left: 8,
-                                                    right: 8,
-                                                    bottom: 0),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      height: 85,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        border: Border.all(
-                                                          color: Colors.black,
-                                                          width: 2,
-                                                        ),
-                                                      ),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5),
-                                                        child: const Image(
-                                                          image: NetworkImage(
-                                                              'https://www.tutorialkart.com/img/hummingbird.png'),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    const Padding(
-                                                      padding:
-                                                          EdgeInsets.all(5),
-                                                      child: Text(
-                                                        "Hardly Man",
-                                                        style: TextStyle(
-                                                            fontSize: 12),
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                      ),
-                                                    )
-                                                  ],
-                                                )),
-                                          ],
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    Column(),
-                  ],
-                );
-              },
-              childCount: 1,
-            ),
-          ),
+        _getSlivers(list, context),//SliverList
         ],
       ),
       drawer: Drawer(
@@ -565,6 +189,247 @@ class _MyHomePageState extends State<MyHomePage> {
       ),*/
     );
   }
+}
+
+SliverList _getSlivers(List myList, BuildContext context) {
+  return SliverList(
+    delegate: SliverChildBuilderDelegate(
+          (BuildContext context, int index) {
+          //return buildRow(myList[index]);
+            if (index == 0) {
+              return Padding(
+                padding: const EdgeInsets.all(10),
+                child: Center(
+                  child: Card(
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: ListTile(
+                        leading: const Icon(Icons.search),
+                        title: const Text("Search for a service"),
+                        onTap: () {}),
+                  ),
+                ),
+              );
+            }
+            else if (index == 1) {
+              return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 3,
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, position) {
+                      return SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                            children: [
+                              //All ITEMS here
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10,
+                                      left: 18,
+                                      right: 8,
+                                      bottom: 0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 85,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2,
+                                          ),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          child: const Image(
+                                            image: NetworkImage(
+                                                'https://www.tutorialkart.com/img/hummingbird.png'),
+                                          ),
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                        EdgeInsets.all(5),
+                                        child: Text(
+                                          "Hardly Man",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                          textAlign:
+                                          TextAlign.left,
+                                          textDirection:
+                                          TextDirection.rtl,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10,
+                                      left: 18,
+                                      right: 8,
+                                      bottom: 0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 85,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2,
+                                          ),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          child: const Image(
+                                            image: NetworkImage(
+                                                'https://www.tutorialkart.com/img/hummingbird.png'),
+                                          ),
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                        EdgeInsets.all(5),
+                                        child: Text(
+                                          "Hardly Man",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                          textAlign:
+                                          TextAlign.left,
+                                          textDirection:
+                                          TextDirection.rtl,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10,
+                                      left: 18,
+                                      right: 8,
+                                      bottom: 0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 85,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2,
+                                          ),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          child: const Image(
+                                            image: NetworkImage(
+                                                'https://www.tutorialkart.com/img/hummingbird.png'),
+                                          ),
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                        EdgeInsets.all(5),
+                                        child: Text(
+                                          "Hardly Man",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                          textAlign:
+                                          TextAlign.left,
+                                          textDirection:
+                                          TextDirection.rtl,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                              ),
+                              Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10,
+                                      left: 18,
+                                      right: 8,
+                                      bottom: 0),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 85,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          border: Border.all(
+                                            color: Colors.black,
+                                            width: 2,
+                                          ),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                          BorderRadius
+                                              .circular(5),
+                                          child: const Image(
+                                            image: NetworkImage(
+                                                'https://www.tutorialkart.com/img/hummingbird.png'),
+                                          ),
+                                        ),
+                                      ),
+                                      const Padding(
+                                        padding:
+                                        EdgeInsets.all(5),
+                                        child: Text(
+                                          "Hardly Man",
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                          textAlign:
+                                          TextAlign.left,
+                                          textDirection:
+                                          TextDirection.rtl,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                              ),
+                            ],
+                          ),
+                      );
+                  }
+              );
+            }
+      },
+      childCount: myList.length,
+    ),
+  );
+}
+
+buildRow(String title) {
+  return Padding(padding: const EdgeInsets.all(15.0),child: Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)));
 }
 
 class CheckApp extends StatelessWidget {
